@@ -1,0 +1,8 @@
+{
+	"components": [
+		{
+			"name": "svg",
+			"path": "src/components/svg"
+		}
+	]
+}
