@@ -4,7 +4,7 @@
 import React from 'react';
 
 //External Helpers
-import { getPath, doesCollide, generateGuid } from 'opus-ui';
+import { getPath, doesCollide, generateGuid } from '@intenda/opus-ui';
 
 //Generators
 const genLabel = (props, { points, label, idLabel = generateGuid(), clickData }, setState) => {

@@ -4,7 +4,7 @@ import { Svg } from './components/svg';
 //PropSpecs
 import propsSvg from './components/svg/props';
 
-import { registerComponentTypes } from 'opus-ui';
+import { registerComponentTypes } from '@intenda/opus-ui';
 
 registerComponentTypes([{
 	type: 'svg',

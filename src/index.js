@@ -11,7 +11,7 @@ import { Svg } from './components/svg';
 import propsSvg from './components/svg/props';
 
 //Opus Lib
-import Opus from 'opus-ui';
+import Opus from '@intenda/opus-ui';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
