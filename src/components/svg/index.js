@@ -4,6 +4,8 @@ import React, { useEffect } from 'react';
 //Events
 import onAddElements from './events/onAddElements';
 import onRemoveElements from './events/onRemoveElements';
+import onSetElementAttributes from './events/onSetElementAttributes';
+import onSetElementAttributeOverrides from './events/onSetElementAttributeOverrides';
 
 //Styles
 import './styles.css';
@@ -26,10 +28,17 @@ const onAddRemoveElements = props => {
 //Exports
 export const Svg = props => {
 	const { id, classNames, style, getHandler, attributes, state } = props;
-	const { tAddElements, tRemoveElements, value } = state;
+	const { tAddElements, tRemoveElements, tSetElementAttributes } = state;
+	const { value, elementAttributeOverrides } = state;
 
-	const handlerDelta = JSON.stringify(tRemoveElements) + JSON.stringify(tAddElements);
-	useEffect(getHandler(onAddRemoveElements), [handlerDelta]);
+	const deltaChangeElements = JSON.stringify(tRemoveElements) + JSON.stringify(tAddElements);
+	useEffect(getHandler(onAddRemoveElements), [deltaChangeElements]);
+
+	const deltaSetAttributes = JSON.stringify(tSetElementAttributes);
+	useEffect(getHandler(onSetElementAttributes), [deltaSetAttributes]);
+
+	const delteOverrides = JSON.stringify(elementAttributeOverrides);
+	useEffect(getHandler(onSetElementAttributeOverrides), [delteOverrides]);
 
 	return (
 		<svg

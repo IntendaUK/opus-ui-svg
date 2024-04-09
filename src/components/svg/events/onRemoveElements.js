@@ -19,7 +19,7 @@ const onRemoveElements = ({ state: { tRemoveElements, value, elements } }, newSt
 
 	newState.value = newValue;
 	newState.elements = elements;
-	newState.tRemoveElements = false;
+	newState.tRemoveElements = null;
 };
 
 export default onRemoveElements;

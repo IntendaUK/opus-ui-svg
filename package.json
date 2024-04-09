@@ -1,15 +1,13 @@
 {
 	"name": "@intenda/opus-ui-svg",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"private": false,
 	"main": "dist/library.js",
 	"homepage": "https://opus-ui.com",
+	"author": "intenda",
 	"dependencies": {
 		"@babel/core": "^7.22.1",
-		"@babel/preset-env": "^7.22.2",
-		"babel-preset-react-app": "^10.0.1",
-		"react-pdf": "^6.2.2",
-		"react-scripts": "^5.0.1"
+		"@babel/preset-env": "^7.22.2"
 	},
 	"scripts": {
 		"start": "react-scripts start",
