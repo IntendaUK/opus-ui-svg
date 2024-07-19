@@ -5,10 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 //Components
-import { Svg } from './components/svg';
-
-//PropSpecs
-import propsSvg from './components/svg/props';
+import './library';
 
 //Opus Lib
 import Opus from '@intenda/opus-ui';
@@ -17,11 +14,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
 	<Opus
-		registerComponentTypes={[{
-			type: 'svg',
-			component: Svg,
-			propSpec: propsSvg
-		}]}
 		startupMda={{
 			type: 'containerSimple',
 			prps: {
@@ -34,9 +26,8 @@ root.render(
 			wgts: [{
 				type: 'container',
 				prps: {
+					padding: true,
 					canClick: true,
-					width: 50,
-					height: 50,
 					backgroundColor: 'yellow',
 					fireScript: {
 						actions: [{
@@ -49,13 +40,18 @@ root.render(
 							}]
 						}]
 					}
-				}
+				},
+				wgts: [{
+					type: 'label',
+					prps: {
+						cpt: 'Set line color to red with "elementAttributeOverrides"'
+					}
+				}]
 			}, {
 				type: 'container',
 				prps: {
+					padding: true,
 					canClick: true,
-					width: 50,
-					height: 50,
 					backgroundColor: 'pink',
 					fireScript: {
 						actions: [{
@@ -78,13 +74,18 @@ root.render(
 							}
 						}]
 					}
-				}
+				},
+				wgts: [{
+					type: 'label',
+					prps: {
+						cpt: 'Reset line data'
+					}
+				}]
 			}, {
 				type: 'container',
 				prps: {
+					padding: true,
 					canClick: true,
-					width: 50,
-					height: 50,
 					backgroundColor: 'red',
 					fireScript: {
 						actions: [{
@@ -97,14 +98,19 @@ root.render(
 							}]
 						}]
 					}
-				}
+				},
+				wgts: [{
+					type: 'label',
+					prps: {
+						cpt: 'Set line color to red with "tSetElementAttributes"'
+					}
+				}]
 			}, {
 				type: 'container',
 				prps: {
+					padding: true,
 					canClick: true,
-					width: 50,
-					height: 50,
-					backgroundColor: 'black',
+					backgroundColor: 'white',
 					fireScript: {
 						actions: [{
 							type: 'setState',
@@ -116,13 +122,18 @@ root.render(
 							}]
 						}]
 					}
-				}
+				},
+				wgts: [{
+					type: 'label',
+					prps: {
+						cpt: 'Set line color to black with "tSetElementAttributes"'
+					}
+				}]
 			}, {
 				type: 'container',
 				prps: {
+					padding: true,
 					canClick: true,
-					width: 50,
-					height: 50,
 					backgroundColor: 'green',
 					fireScript: {
 						actions: [{
@@ -135,13 +146,18 @@ root.render(
 							}]
 						}]
 					}
-				}
+				},
+				wgts: [{
+					type: 'label',
+					prps: {
+						cpt: 'Set line stroke width to 5 with "tSetElementAttributes"'
+					}
+				}]
 			}, {
 				type: 'container',
 				prps: {
+					padding: true,
 					canClick: true,
-					width: 50,
-					height: 50,
 					backgroundColor: 'blue',
 					fireScript: {
 						actions: [{
@@ -154,7 +170,13 @@ root.render(
 							}]
 						}]
 					}
-				}
+				},
+				wgts: [{
+					type: 'label',
+					prps: {
+						cpt: 'Set line stroke width to 2 with "tSetElementAttributes"'
+					}
+				}]
 			}, {
 				type: 'container',
 				prps: {
