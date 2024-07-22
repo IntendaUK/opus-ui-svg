@@ -38,23 +38,18 @@ const getAnchor = ({ config: { anchorAxis }, posA, posB }) => {
 	return res;
 };
 
-const getAbsolutePosition = nodeId => {
+const getAbsolutePosition = (nodeId, svgParentId) => {
 	const node = document.getElementById(nodeId);
 
 	let left = node.offsetLeft;
 	let top = node.offsetTop;
 	let parent = node.offsetParent;
 
-	while (parent) {
-		if (getComputedStyle(parent).position === 'absolute') {
-			left += parent.offsetLeft;
-			top += parent.offsetTop;
-			break;
-		} else {
-			left += parent.offsetLeft;
-			top += parent.offsetTop;
-			parent = parent.offsetParent;
-		}
+	while (parent && parent.id !== svgParentId) {
+		left += parent.offsetLeft;
+		top += parent.offsetTop;
+
+		parent = parent.offsetParent;
 	}
 
 	return {
@@ -68,12 +63,15 @@ const getAbsolutePosition = nodeId => {
 };
 
 /* eslint-disable-next-line max-lines-per-function */
-export const getAutoAnchorPoints = (props, { fromComponent, toComponent }) => {
+export const getAutoAnchorPoints = ({ id }, { fromComponent, toComponent }) => {
 	const { id: idA } = fromComponent;
 	const { id: idB } = toComponent;
 
-	const posA = getAbsolutePosition(idA);
-	const posB = getAbsolutePosition(idB);
+	const el = document.getElementById(id);
+	const parentId = el.parentNode.id;
+
+	const posA = getAbsolutePosition(idA, parentId);
+	const posB = getAbsolutePosition(idB, parentId);
 
 	const anchorA = fromComponent.anchor ?? getAnchor({
 		config: fromComponent,
