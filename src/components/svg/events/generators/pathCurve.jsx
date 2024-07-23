@@ -15,7 +15,7 @@ const genPathCurve = (
 	props,
 	config
 ) => {
-	const { id = generateGuid(), mapName, zoom = 10 } = config;
+	const { id = generateGuid(), mapName, zoom = 10, color = 'black', width = 2, attributes } = config;
 
 	let [
 		{ x: xa, y: ya, xNoOffset: xna, yNoOffset: yna },
@@ -86,16 +86,19 @@ const genPathCurve = (
 			curveArray.push(`L${points[i + 1]},${points[i]}`);
 	}
 
-	const stroke = 'black';
+	const elProps = {
+		stroke: color,
+		strokeWidth: width,
+		...attributes
+	}
 
 	return (
 		<path
 			key={id}
 			d={curveArray.join(' ')}
 			fill='none'
-			strokeWidth='2'
-			stroke={stroke}
 			strokeLinecap='round'
+			{...elProps}
 		/>
 	);
 };

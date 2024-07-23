@@ -283,6 +283,8 @@ root.render(
 									mapTo: {
 										type: 'bezierCurve',
 										id: '((variable.record.id))',
+										hasArrow: true,
+										label: 'link ((sM.variable.record.source.id))',
 										fromComponent: {
 											id: '((sM.variable.record.source.id))',
 											anchorAxis: 'horizontal'
@@ -290,6 +292,9 @@ root.render(
 										toComponent: {
 											id: '((sM.variable.record.target.id))',
 											anchorAxis: 'horizontal'
+										},
+										labelAttributes: {
+											stroke: 'red'
 										}
 									},
 									storeAsVariable: 'svgLinks'

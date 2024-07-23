@@ -10,16 +10,11 @@ import { getAutoAnchorPoints } from './helpers';
 import genLabel from './label';
 
 //Generator
-/* eslint-disable-next-line max-lines-per-function */
-const genBezierCurve = (
-	props,
-	config,
-	setState,
-	isClickHandler = false
-) => {
+const genSmoothedLine = (props, config) => {
 	const {
+		points,
 		id = generateGuid(),
-		clickData,
+		deltaSize = 48,
 		hasArrow,
 		color = 'black',
 		width = 2,
@@ -28,18 +23,28 @@ const genBezierCurve = (
 		labelAttributes
 	} = config;
 
-	let [{ x: xa, y: ya }, { x: xb, y: yb }] = config.points ?? getAutoAnchorPoints(props, config);
+	const [{ x: xa, y: ya }, { x: xb, y: yb }] = points ?? getAutoAnchorPoints(props, config);
 
-	const dx = (xb - xa) / 2;
-	const dy = 0;
+	const curvePoints = [{
+		x: xa,
+		y: ya
+	}, {
+		x: xb - deltaSize,
+		y: ya
+	}, {
+		x: xb - deltaSize,
+		y: yb
+	}, {
+		x: xb,
+		y: yb
+	}];
 
-	const x1 = xa + dx;
-	const y1 = ya + dy;
+	const curveString = curvePoints.map((p, i) => {
+		if (i === 0)
+			return `M${p.x},${p.y}`;
 
-	const x2 = xb - dx;
-	const y2 = yb - dy;
-
-	const curveString = `M${xa},${ya} C${x1},${y1} ${x2},${y2} ${xb},${yb}`;
+		return `L${p.x},${p.y}`;
+	}).join(' ');
 
 	const elProps = {
 		stroke: color,
@@ -47,20 +52,11 @@ const genBezierCurve = (
 		...attributes
 	};
 
-	if (isClickHandler) {
-		elProps.onClick = setState.bind(null, { onClickedElements: [clickData] });
-		elProps.strokeWidth = 30;
-	}
-
-	if (isClickHandler)
-		elProps.stroke = 'transparent';
-
 	if (hasArrow)
-		elProps.markerEnd = 'url(#arrowhead)';
+		elProps.markerEnd = 'url(#arrowhead-white)';
 
 	const builtLabel = label === undefined ? null : genLabel(props, {
 		label,
-		clickData,
 		attributes: labelAttributes,
 		curveString
 	}, props.setState);
@@ -81,4 +77,4 @@ const genBezierCurve = (
 	return res;
 };
 
-export default genBezierCurve;
+export default genSmoothedLine;
