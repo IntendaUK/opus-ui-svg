@@ -1,5 +1,5 @@
 //System
-import React from 'react';
+import React, { Fragment } from 'react';
 
 //External Helpers
 import { generateGuid } from '@intenda/opus-ui';
@@ -62,7 +62,7 @@ const genSmoothedLine = (props, config) => {
 	}, props.setState);
 
 	const res = (
-		<>
+		<Fragment key={`${id}-frag`}>
 			<path
 				key={id}
 				d={curveString}
@@ -71,7 +71,7 @@ const genSmoothedLine = (props, config) => {
 				{...elProps}
 			/>
 			{builtLabel}
-		</>
+		</Fragment>
 	);
 
 	return res;

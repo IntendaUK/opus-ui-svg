@@ -1,5 +1,5 @@
 //System
-import React from 'react';
+import React, { Fragment } from 'react';
 
 //External Helpers
 import { generateGuid } from '@intenda/opus-ui';
@@ -66,7 +66,7 @@ const genBezierCurve = (
 	}, props.setState);
 
 	const res = (
-		<>
+		<Fragment key={`${id}-frag`}>
 			<path
 				key={id}
 				d={curveString}
@@ -75,7 +75,7 @@ const genBezierCurve = (
 				{...elProps}
 			/>
 			{builtLabel}
-		</>
+		</Fragment>
 	);
 
 	return res;
