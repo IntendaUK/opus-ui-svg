@@ -1,6 +1,6 @@
 {
     "propSpecConfig": {
-        "path": "src/components/svg/props.js",
+        "path": "dist/components/svg/props.js",
         "functions": [],
         "dependents": []
     }

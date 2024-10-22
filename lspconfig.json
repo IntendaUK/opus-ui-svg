@@ -2,7 +2,7 @@
 	"components": [
 		{
 			"name": "svg",
-			"path": "src/components/svg"
+			"path": "dist/components/svg"
 		}
 	]
 }
