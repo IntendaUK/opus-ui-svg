@@ -1,6 +1,9 @@
 //React
 import { cloneElement } from 'react';
 
+//System Helpers
+import { spliceWhere } from '@intenda/opus-ui';
+
 //Event
 const onRemoveElements = ({ state: { tRemoveElements, value, elements } }, newState) => {
 	const newValue = [
@@ -15,7 +18,7 @@ const onRemoveElements = ({ state: { tRemoveElements, value, elements } }, newSt
 		newValue.push(cloneElement(value[i + 1]));
 	});
 
-	elements.spliceWhere(e => tRemoveElements.includes(e.id));
+	spliceWhere(elements, e => tRemoveElements.includes(e.id));
 
 	newState.value = newValue;
 	newState.elements = elements;
